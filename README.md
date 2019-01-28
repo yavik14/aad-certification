@@ -26,7 +26,7 @@
 * 3.2 Access Room database with data access object (DAO)
 * 3.3 Observe and respond to changing data using LiveData
 * 3.4 Use a Repository to handle data operations
-* [3.5 Read and parse raw resources or asset files](https://github.com/yavik14/aad-certification/tree/feature/2.1_read_parse_raw_assets)
+* [3.5 Read and parse raw resources or asset files](https://github.com/yavik14/aad-certification/tree/feature/3.5_read_parse_raw_and_assets)
 	* [AssetsManager from Android Reference](https://developer.android.com/reference/android/content/res/AssetManager) 
 	* [AssetsManager example](https://www.concretepage.com/android/android-assetmanager-example-to-load-image-from-assets-folder)
 	* [Resource provision from Android Reference](https://developer.android.com/guide/topics/resources/providing-resources?hl=es-419)
