@@ -6,18 +6,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.theyavikteam.aad_certification.api.ApiFactory;
 import com.theyavikteam.aad_certification.api.dto.UserDto;
+import com.theyavikteam.aad_certification.data.repository.datasource.BrawlRepository;
 import com.theyavikteam.aad_certification.utils.ContextUtils;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -34,17 +30,16 @@ public class MainActivity extends AppCompatActivity {
         labelMain = findViewById(R.id.labelMain);
 //        loadHeaderImage();
 //        readBrawlers();
-        ApiFactory.createBrawlStatsApi().getUserByTag("98LC2JV0").enqueue(new Callback<UserDto>() {
+        BrawlRepository brawlRepository = new BrawlRepository();
+        brawlRepository.getUserByTag("98LC2JV0", new BrawlRepository.RepositoryCallback<UserDto>() {
             @Override
-            public void onResponse(Call<UserDto> call, Response<UserDto> response) {
-                if (response.body() != null) {
-                    labelMain.setText(response.body().getName());
-                }
+            public void onSuccess(UserDto response) {
+                labelMain.setText(response.getName());
             }
 
             @Override
-            public void onFailure(Call<UserDto> call, Throwable t) {
-                ContextUtils.toastMessage(getApplicationContext(), t.getMessage());
+            public void onError(String errorMessage) {
+                ContextUtils.toastMessage(getApplicationContext(), errorMessage);
             }
         });
     }
