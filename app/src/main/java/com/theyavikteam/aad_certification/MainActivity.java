@@ -5,12 +5,19 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import com.theyavikteam.aad_certification.api.ApiFactory;
+import com.theyavikteam.aad_certification.api.dto.UserDto;
+import com.theyavikteam.aad_certification.utils.ContextUtils;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,8 +32,21 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         imageMain = findViewById(R.id.imageMain);
         labelMain = findViewById(R.id.labelMain);
-        loadHeaderImage();
-        readBrawlers();
+//        loadHeaderImage();
+//        readBrawlers();
+        ApiFactory.createBrawlStatsApi().getUserByTag("98LC2JV0").enqueue(new Callback<UserDto>() {
+            @Override
+            public void onResponse(Call<UserDto> call, Response<UserDto> response) {
+                if (response.body() != null) {
+                    labelMain.setText(response.body().getName());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<UserDto> call, Throwable t) {
+                ContextUtils.toastMessage(getApplicationContext(), t.getMessage());
+            }
+        });
     }
 
     //TODO Example of read image from assets
@@ -34,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         try {
             imageMain.setImageBitmap(BitmapFactory.decodeStream(getAssets().open(LOGO_FILE_NAME)));
         } catch (IOException e) {
-            Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+            ContextUtils.toastMessage(getApplicationContext(), e.getMessage());
         }
     }
 
@@ -50,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
                 brawlersBuilder.append("\n");
             }
         } catch (IOException e) {
-            Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+            ContextUtils.toastMessage(getApplicationContext(), e.getMessage());
         }
         labelMain.setText(brawlersBuilder.toString());
     }
