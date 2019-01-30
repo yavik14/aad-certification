@@ -3,11 +3,13 @@ package com.theyavikteam.aad_certification;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.theyavikteam.aad_certification.api.dto.UserDto;
-import com.theyavikteam.aad_certification.data.repository.datasource.BrawlRepository;
+import com.theyavikteam.aad_certification.data.repository.BrawlRepository;
+import com.theyavikteam.aad_certification.domain.bo.UserBo;
 import com.theyavikteam.aad_certification.utils.ContextUtils;
 
 import java.io.BufferedReader;
@@ -21,6 +23,9 @@ public class MainActivity extends AppCompatActivity {
 
     private ImageView imageMain;
     private TextView labelMain;
+    private Button buttonReload;
+    private BrawlRepository brawlRepository;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,12 +33,25 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         imageMain = findViewById(R.id.imageMain);
         labelMain = findViewById(R.id.labelMain);
-//        loadHeaderImage();
+        buttonReload = findViewById(R.id.buttonLoad);
+        loadHeaderImage();
 //        readBrawlers();
-        BrawlRepository brawlRepository = new BrawlRepository();
-        brawlRepository.getUserByTag("98LC2JV0", new BrawlRepository.RepositoryCallback<UserDto>() {
+        brawlRepository = new BrawlRepository();
+        buttonReload.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onSuccess(UserDto response) {
+            public void onClick(View view) {
+                labelMain.setText("");
+                loadUser("98LC2JV0");
+            }
+        });
+
+
+    }
+
+    private void loadUser(String tag){
+        brawlRepository.getUserByTag(tag, new BrawlRepository.RepositoryCallback<UserBo>() {
+            @Override
+            public void onSuccess(UserBo response) {
                 labelMain.setText(response.getName());
             }
 
