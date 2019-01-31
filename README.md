@@ -25,7 +25,10 @@
 * 3.1 Define data using Room entities
 * 3.2 Access Room database with data access object (DAO)
 * 3.3 Observe and respond to changing data using LiveData
-* 3.4 Use a Repository to handle data operations
+* [3.4 Use a Repository to handle data operations](https://github.com/yavik14/aad-certification/tree/feature/3.4_repository_patter_operations)
+	* [Retrofit](http://square.github.io/retrofit/)
+	* [The Evolution of Repository Pattern](http://hannesdorfmann.com/android/evolution-of-the-repository-pattern) 
+	* [Simple Cache Mapping](https://codereview.stackexchange.com/questions/123801/simple-timed-cache-by-wrapping-hashmap)
 * [3.5 Read and parse raw resources or asset files](https://github.com/yavik14/aad-certification/tree/feature/3.5_read_parse_raw_and_assets)
 	* [AssetsManager from Android Reference](https://developer.android.com/reference/android/content/res/AssetManager) 
 	* [AssetsManager example](https://www.concretepage.com/android/android-assetmanager-example-to-load-image-from-assets-folder)

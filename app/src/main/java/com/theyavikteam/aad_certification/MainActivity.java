@@ -3,9 +3,14 @@ package com.theyavikteam.aad_certification;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import com.theyavikteam.aad_certification.data.repository.BrawlRepository;
+import com.theyavikteam.aad_certification.domain.bo.UserBo;
+import com.theyavikteam.aad_certification.utils.ContextUtils;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -18,6 +23,9 @@ public class MainActivity extends AppCompatActivity {
 
     private ImageView imageMain;
     private TextView labelMain;
+    private Button buttonReload;
+    private BrawlRepository brawlRepository;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,8 +33,33 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         imageMain = findViewById(R.id.imageMain);
         labelMain = findViewById(R.id.labelMain);
+        buttonReload = findViewById(R.id.buttonLoad);
         loadHeaderImage();
-        readBrawlers();
+//        readBrawlers();
+        brawlRepository = new BrawlRepository();
+        buttonReload.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                labelMain.setText("");
+                loadUser("98LC2JV0");
+            }
+        });
+
+
+    }
+
+    private void loadUser(String tag){
+        brawlRepository.getUserByTag(tag, new BrawlRepository.RepositoryCallback<UserBo>() {
+            @Override
+            public void onSuccess(UserBo response) {
+                labelMain.setText(response.getName());
+            }
+
+            @Override
+            public void onError(String errorMessage) {
+                ContextUtils.toastMessage(getApplicationContext(), errorMessage);
+            }
+        });
     }
 
     //TODO Example of read image from assets
@@ -34,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
         try {
             imageMain.setImageBitmap(BitmapFactory.decodeStream(getAssets().open(LOGO_FILE_NAME)));
         } catch (IOException e) {
-            Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+            ContextUtils.toastMessage(getApplicationContext(), e.getMessage());
         }
     }
 
@@ -50,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
                 brawlersBuilder.append("\n");
             }
         } catch (IOException e) {
-            Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+            ContextUtils.toastMessage(getApplicationContext(), e.getMessage());
         }
         labelMain.setText(brawlersBuilder.toString());
     }
