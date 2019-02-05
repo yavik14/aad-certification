@@ -23,8 +23,20 @@
 
 ### 3. App data and files
 * 3.1 Define data using Room entities
+	* [Room Introduction](https://android.jlelse.eu/android-architecture-components-room-introduction-4774dd72a1ae) 
+	* [Room relationships](https://android.jlelse.eu/android-architecture-components-room-relationships-bf473510c14a)
+	* [Room Persistence Library](https://developer.android.com/topic/libraries/architecture/room) 
+	* [Android Persistence Codelab](https://codelabs.developers.google.com/codelabs/android-persistence/#0)
 * 3.2 Access Room database with data access object (DAO)
+	* [Save local data using Room](https://developer.android.com/training/data-storage/room/) 
+	* [SQLite Cheat Sheet](http://www.sqlitetutorial.net/sqlite-cheat-sheet/)
+	* [Android Room with View Codelab](https://codelabs.developers.google.com/codelabs/android-room-with-a-view/#0)
 * 3.3 Observe and respond to changing data using LiveData
+	* [View Model Overview](https://developer.android.com/topic/libraries/architecture/viewmodel#java) 
+	* [Handling Lifecycles with Lifecycle-Aware Components](https://developer.android.com/topic/libraries/architecture/lifecycle)
+	* [ViewModels Persistence OnSaveInstanceState](https://medium.com/androiddevelopers/viewmodels-persistence-onsaveinstancestate-restoring-ui-state-and-loaders-fc7cc4a6c090)
+	* [Android Lifecycle CodeLab](https://codelabs.developers.google.com/codelabs/android-lifecycles/#0)
+	* [Architecture Componens BasicSample](https://github.com/googlesamples/android-architecture-components/tree/master/BasicSample)
 * [3.4 Use a Repository to handle data operations](https://github.com/yavik14/aad-certification/tree/feature/3.4_repository_patter_operations)
 	* [Retrofit](http://square.github.io/retrofit/)
 	* [The Evolution of Repository Pattern](http://hannesdorfmann.com/android/evolution-of-the-repository-pattern) 
