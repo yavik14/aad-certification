@@ -1,21 +1,25 @@
-package com.theyavikteam.aad_certification.data.db;
+package com.theyavikteam.aad_certification.db.entity;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.ForeignKey;
+import android.support.annotation.NonNull;
 
 @Entity(tableName = "user_brawler_join",
-        primaryKeys = {"brawlerName", "userTag"},
+        primaryKeys = {"brawlerId", "userTag"},
         foreignKeys = {
                 @ForeignKey(entity = BrawlerEntity.class,
-                        parentColumns = "name",
-                        childColumns = "brawlerName"),
+                        parentColumns = "id",
+                        childColumns = "brawlerId"),
                 @ForeignKey(entity = UserEntity.class,
                         parentColumns = "tag",
                         childColumns = "userTag")
         })
 public class UserBrawlerEntity {
+    @NonNull
+    private String brawlerId;
     private String brawlerName;
+    @NonNull
     private String userTag;
     private Integer trophies;
     @ColumnInfo(name = "max_trophies")
@@ -23,6 +27,15 @@ public class UserBrawlerEntity {
     private Integer power;
     private Integer level;
     private Integer rank;
+
+    @NonNull
+    public String getBrawlerId() {
+        return brawlerId;
+    }
+
+    public void setBrawlerId(@NonNull String brawlerId) {
+        this.brawlerId = brawlerId;
+    }
 
     public String getBrawlerName() {
         return brawlerName;

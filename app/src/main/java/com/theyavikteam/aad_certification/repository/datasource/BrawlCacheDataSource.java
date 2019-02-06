@@ -1,8 +1,8 @@
-package com.theyavikteam.aad_certification.data.repository.datasource;
+package com.theyavikteam.aad_certification.repository.datasource;
 
 import android.util.Log;
 
-import com.theyavikteam.aad_certification.data.repository.BrawlRepository;
+import com.theyavikteam.aad_certification.repository.BrawlRepository;
 import com.theyavikteam.aad_certification.domain.bo.UserBo;
 
 import java.util.Calendar;

@@ -1,14 +1,11 @@
-package com.theyavikteam.aad_certification.data.db;
+package com.theyavikteam.aad_certification.db.entity;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
-import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
-@Entity(tableName = "clubs")
+@Entity(tableName = "clubs", primaryKeys = "tag")
 public class ClubEntity {
-
-    @PrimaryKey
     @NonNull
     private String tag;
     private String name;

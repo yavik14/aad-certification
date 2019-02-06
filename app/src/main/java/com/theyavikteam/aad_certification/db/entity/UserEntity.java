@@ -1,20 +1,17 @@
-package com.theyavikteam.aad_certification.data.db;
+package com.theyavikteam.aad_certification.db.entity;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.ForeignKey;
-import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
 import static android.arch.persistence.room.ForeignKey.CASCADE;
 
-@Entity(tableName = "users", foreignKeys = @ForeignKey(entity = ClubEntity.class,
+@Entity(tableName = "users", primaryKeys = "tag", foreignKeys = @ForeignKey(entity = ClubEntity.class,
         parentColumns = "tag",
-        childColumns = "clubTag",
+        childColumns = "club_tag",
         onDelete = CASCADE))
 public class UserEntity {
-
-    @PrimaryKey
     @NonNull
     private String tag;
     private String name;
