@@ -1,4 +1,4 @@
-package com.theyavikteam.aad_certification.data.repository.datasource;
+package com.theyavikteam.aad_certification.repository.datasource;
 
 import java.util.Calendar;
 

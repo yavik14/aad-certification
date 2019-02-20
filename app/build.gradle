@@ -34,13 +34,16 @@ dependencies {
     implementation "com.squareup.okhttp3:logging-interceptor:$okhttpLoggingInterceptorVersion"
 
     //ARCHITECTURE
-    implementation 'android.arch.lifecycle:extensions:' + rootProject.archLifecycleVersion
-    implementation 'android.arch.persistence.room:runtime:' + rootProject.archRoomVersion
-    annotationProcessor 'android.arch.lifecycle:compiler:' + rootProject.archLifecycleVersion
-    annotationProcessor 'android.arch.persistence.room:compiler:' + rootProject.archRoomVersion
+    implementation "android.arch.lifecycle:extensions:$archLifecycleVersion"
+    implementation "android.arch.persistence.room:runtime:$archRoomVersion"
+    annotationProcessor "android.arch.lifecycle:compiler:$archLifecycleVersion"
+    annotationProcessor "android.arch.persistence.room:compiler:$archRoomVersion"
+
     //TESTING
     testImplementation "junit:junit:$jUnitVersion"
     androidTestImplementation "com.android.support.test:runner:$runnerVersion"
-    androidTestImplementation "com.android.support.test.espresso:espresso-core:$espressoVersion"
+    androidTestImplementation ("com.android.support.test.espresso:espresso-core:$espressoVersion", {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
 
 }

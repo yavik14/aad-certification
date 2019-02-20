@@ -1,4 +1,4 @@
-package com.theyavikteam.aad_certification.data.repository.mapper;
+package com.theyavikteam.aad_certification.repository.mapper;
 
 import com.theyavikteam.aad_certification.api.dto.ClubDto;
 import com.theyavikteam.aad_certification.domain.bo.ClubBo;

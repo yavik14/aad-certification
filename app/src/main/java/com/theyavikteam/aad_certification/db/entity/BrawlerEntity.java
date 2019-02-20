@@ -1,18 +1,25 @@
-package com.theyavikteam.aad_certification.data.db;
+package com.theyavikteam.aad_certification.db.entity;
 
 import android.arch.persistence.room.Entity;
-import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
-@Entity(tableName = "brawlers")
+@Entity(tableName = "brawlers", primaryKeys = "id")
 public class BrawlerEntity {
-    @PrimaryKey
     @NonNull
+    private String id;
     private String name;
     private String rarity;
     private String color;
 
     @NonNull
+    public String getId() {
+        return id;
+    }
+
+    public void setId(@NonNull String id) {
+        this.id = id;
+    }
+
     public String getName() {
         return name;
     }

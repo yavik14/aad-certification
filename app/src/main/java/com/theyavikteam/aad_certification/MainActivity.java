@@ -8,7 +8,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.theyavikteam.aad_certification.data.repository.BrawlRepository;
+import com.theyavikteam.aad_certification.repository.BrawlRepository;
 import com.theyavikteam.aad_certification.domain.bo.UserBo;
 import com.theyavikteam.aad_certification.utils.ContextUtils;
 

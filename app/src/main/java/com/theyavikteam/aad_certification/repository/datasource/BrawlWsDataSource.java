@@ -1,12 +1,12 @@
-package com.theyavikteam.aad_certification.data.repository.datasource;
+package com.theyavikteam.aad_certification.repository.datasource;
 
 import android.util.Log;
 
 import com.theyavikteam.aad_certification.api.ApiFactory;
 import com.theyavikteam.aad_certification.api.BrawlStatsApi;
 import com.theyavikteam.aad_certification.api.dto.UserDto;
-import com.theyavikteam.aad_certification.data.repository.BrawlRepository;
-import com.theyavikteam.aad_certification.data.repository.mapper.UserMapper;
+import com.theyavikteam.aad_certification.repository.BrawlRepository;
+import com.theyavikteam.aad_certification.repository.mapper.UserMapper;
 import com.theyavikteam.aad_certification.domain.bo.UserBo;
 
 import retrofit2.Call;
@@ -28,7 +28,7 @@ public class BrawlWsDataSource {
                     callback.onSuccess(UserMapper.dtoToBo(response.body()));
                     Log.i(BrawlRepository.class.getSimpleName(), "From Ws");
                 } else {
-                    String errorMessage = (response.errorBody() != null) ? response.errorBody().toString() : "Unexpected error";
+                    String errorMessage = "Unexpected error";
                     callback.onError(errorMessage);
                     Log.i(BrawlRepository.class.getSimpleName(), errorMessage);
                 }
